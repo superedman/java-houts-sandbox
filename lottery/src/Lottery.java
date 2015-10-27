@@ -14,9 +14,9 @@ public class Lottery
         int counter = 0;
         int[] values;
 
-        values = getArray();
-        for (int num : values)
-            System.out.print(num + " ");
+//        values = getArray();
+//        for (int num : values)
+//            System.out.print(num + " ");
 
 
         /**
@@ -26,7 +26,7 @@ public class Lottery
         Random rand = new Random();
         for (int i = 0; i < lotteryNumbers.length; i++)
         {
-            int numbers = rand.nextInt(10);
+            lotteryNumbers[i] = rand.nextInt(10);
         }
 
         Scanner keyboard = new Scanner(System.in);
@@ -50,6 +50,18 @@ public class Lottery
             System.out.println("Sorry, you're not a winner today.");
 
         // I still need to display the number of matching digits in each array.  How?
+        System.out.println("You matched " + counter + " lottery number(s) correctly");
+
+        System.out.println("Your lottery picks were: ");
+        for (int i = 0; i < lotteryPicks.length; i++) {
+            System.out.print(lotteryPicks[i] + " ");
+        }
+        System.out.println("\n");
+
+        System.out.println("The lottery numbers were: ");
+        for (int i = 0; i < lotteryNumbers.length; i++) {
+            System.out.print(lotteryNumbers[i] + " ");
+        }
 
         System.exit(0);
 
@@ -61,11 +73,11 @@ public class Lottery
      * @return A reference to an array of integers
      */
 
-    public static int[] getArray()
-    {
-        int[] array = lotteryNumbers;  // I want this method to return a copy of the
-        // lotteryNumbers array.  How?
-
-        return array;
-    }
+//    public static int[] getArray()
+//    {
+//        int[] array = lotteryNumbers;  // I want this method to return a copy of the
+//        // lotteryNumbers array.  How?
+//
+//        return array;
+//    }
 }
