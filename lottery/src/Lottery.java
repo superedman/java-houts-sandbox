@@ -1,83 +1,36 @@
+import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
-
 
 public class Lottery
 {
 
+    private int[] lotteryNumbers;
 
-    public static void main(String[] args)
-    {
-        int[] lotteryNumbers = new int[5]; // Creates an array with 5 elements.
-        int[] lotteryPicks = new int[5];   // Creates an array with 5 elements
-        // for lottery picks.
-        int counter = 0;
-        int[] values;
-
-//        values = getArray();
-//        for (int num : values)
-//            System.out.print(num + " ");
-
-
-        /**
-         * Constructor
-         */
-
+    /**
+     * Constructor.
+     */
+    public Lottery() {
+        // Create 5 random numbers
+        lotteryNumbers = new int[5];
         Random rand = new Random();
         for (int i = 0; i < lotteryNumbers.length; i++)
         {
             lotteryNumbers[i] = rand.nextInt(10);
         }
+    }
 
-        Scanner keyboard = new Scanner(System.in);
-
-        System.out.println("Pick your winning five numbers to win the lottery! ");
-        System.out.println("Picks must be numbers between 0 and 9.");
-
-        for (int i = 0; i < lotteryPicks.length; i++)
-        {
-            System.out.println("Enter pick #" + (i + 1) + ": ");
-            lotteryPicks[i] = keyboard.nextInt();
-            if (lotteryNumbers[i] == lotteryPicks[i])
-            {
-                counter+= 1;
+    public int checkNumbers(int[] lotteryPicks) {
+        int numCorrect = 0;
+        for (int i = 0; i < lotteryNumbers.length; i++) {
+            if (lotteryNumbers[i] == lotteryPicks[i]) {
+                numCorrect += 1;
             }
         }
 
-        if (counter == 5)
-            System.out.println("You're the grand prize winner!");
-        else
-            System.out.println("Sorry, you're not a winner today.");
-
-        // I still need to display the number of matching digits in each array.  How?
-        System.out.println("You matched " + counter + " lottery number(s) correctly");
-
-        System.out.println("Your lottery picks were: ");
-        for (int i = 0; i < lotteryPicks.length; i++) {
-            System.out.print(lotteryPicks[i] + " ");
-        }
-        System.out.println("\n");
-
-        System.out.println("The lottery numbers were: ");
-        for (int i = 0; i < lotteryNumbers.length; i++) {
-            System.out.print(lotteryNumbers[i] + " ");
-        }
-
-        System.exit(0);
-
-
+        return numCorrect;
     }
 
-    /**
-     * getArray method
-     * @return A reference to an array of integers
-     */
-
-//    public static int[] getArray()
-//    {
-//        int[] array = lotteryNumbers;  // I want this method to return a copy of the
-//        // lotteryNumbers array.  How?
-//
-//        return array;
-//    }
+    public int[] getLotteryNumbers() {
+        return Arrays.copyOf(lotteryNumbers, lotteryNumbers.length);
+    }
 }
